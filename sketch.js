@@ -15,8 +15,6 @@ function preload() {
 }
 
 function setup() {//configuraciones 
-
-
   canvas = createCanvas(1200, 600);
   engine = Engine.create();
   world = engine.world;
@@ -36,10 +34,10 @@ function setup() {//configuraciones
   cannon = new Cannon(180,110,130,100,angle);
 
   //que es und bucle ep 1
-  for(var i=300;i<=330;i=i+2){
+ /* for(var i=300;i<=330;i=i+2){
     console.log(i);
     console.log('no estoy en python y ya se que es un bucle si esto no funciona me reprueban');
-    }
+    }*/
     
 }
 
@@ -47,32 +45,20 @@ function draw() {
   image(backgroundImg,0,0,1200,600)
   Engine.update(engine);
   
-  
   rect(ground.position.x, ground.position.y, width * 2, 1);
 
   push();
   imageMode(CENTER);
-
   image(towerImage,tower.position.x, tower.position.y, 160, 310);
-
   pop();  
 
   for(var i=0;i<ball2.length;i++){
-    showCannonBalls(balls[i]);
+    showCannonBalls(ball2[i]);
   }
 
   cannon.display();
 
 }
-
-function keyReleased(){
-  if (keyCode===DOWN_ARROW){
-    ball.shoot();
-    
-    
-  }
-}
-
 function keyPressed(){
   if(keyCode===DOWN_ARROW){
     var ball = new Ball(cannon.x, cannon.y);
@@ -84,13 +70,22 @@ function keyPressed(){
 
 }
 
-function showCannonBalls(bala){
-  if(bala){
+function keyReleased(){
+  if (keyCode===DOWN_ARROW){
+    ball2[ball2.length-1].shoot();
+    
+  }
+}
+
+
+
+function showCannonBalls(ball, index){
+  if(ball){
     ball.display();
   }
 
 }
 
- 
+
 
 //pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pep//pepee//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe//pepe
